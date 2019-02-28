@@ -1,3 +1,3 @@
 # Paulina Żurawska
 
-tsw
+zurawskapa@gmail.com
