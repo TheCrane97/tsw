@@ -1,47 +1,52 @@
 /* jshint strict: global, esversion: 6, devel: true */
 'use strict';
 
-
-let types=['number','number'];
-
-let fun = function(a,b)
+function defFun(fun,types)
 {
-    return a+b;
-}
-
-
-let defFun = function(fun,types)
-{
-    fun.typeConstr = types;
+    fun.typeConstr=types;
     return fun;
 }
 
-const myfun = defFun(fun,types);
 
-let appFun = function (myfun,arg) 
+const myfun = defFun((a, b) => a + b, ['number','number']);
+//console.log(myfun.typeConstr);
+
+function appFun(f)
 {
-
-    if (myfun.typeConstr === 'undefined') 
+    if(f.typeConstr===undefined)
     {
-      throw({ typerr: "typeConstr is undefined" });
+        
+        throw({typerr:"Brak typeConstr"});
+        
     }
     else
     {
-        foreach(element in Array.from(arg))
-        {
-            if(typeof(element)!=myfun.typeConstr)   
-                throw({typerr: "typeof(element) is not a" + myfun.typeConstr});
-        }   
+        let tab=Array.from(arguments).slice(1);
+        
+        tab.forEach((elem) => {
+               
+                if(!f.typeConstr.includes(typeof(elem)))
+                {
+                    throw({
+                        typerr:{
+                            "argument":elem,
+                            "errorMessage": "argument ma zly typ",
+                            "typeOfElem":typeof(elem)
+                        }
+                    });
+                }
+            
+        });
 
-        return myfun.apply(this,arg);
-   
+
+        return f.apply(null,tab);
+       
     }
 }
-
 
 
 try {
     console.log(appFun(myfun, 12, 15));
 } catch (e) {
-    console.log(e.typerr);
+    console.log(e);
 }
