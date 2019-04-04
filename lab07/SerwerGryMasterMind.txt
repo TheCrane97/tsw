@@ -1,0 +1,48 @@
+// Moduły Node.js do wykorzystania:
+/*
+  body-parser
+  errorhandler
+  express
+  morgan
+  uuid
+*/
+
+/// ZAPYTANIE: POST /game/new
+let newGame = {
+    "size": 5,
+    "colors": 9,
+    "steps": 20     // jeśli brak to nieograniczona liczba
+}
+
+// ODPOWIEDŹ:
+let newGameRes = {
+    "game": "33c6e9c0-56c9-11e9-a8f5-b3a4822f0a29",
+    "size": 5,
+    "colors": 9,
+    "steps": 20     // jeśli brak to nieograniczona liczba ruchów
+}
+
+// ZAPYTANIE (nowy ruch): POST /game/move
+let move = {
+    "game": "33c6e9c0-56c9-11e9-a8f5-b3a4822f0a29",
+    "move": [1,2,2,4,3]
+}
+
+//ODPOWIEDŹ:
+let moveRes = {
+    "game": "33c6e9c0-56c9-11e9-a8f5-b3a4822f0a29",
+    "result": {
+        "black": 1,
+        "white": 0
+    }
+}
+
+// ZAPYTANIE (stan gry): POST /game/status
+let gameStatus = {
+    "game": "33c6e9c0-56c9-11e9-a8f5-b3a4822f0a29",
+}
+//ODPOWIEDŹ:
+let moveRes = {
+    "game": "33c6e9c0-56c9-11e9-a8f5-b3a4822f0a29",
+    "solved": false
+}
