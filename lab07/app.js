@@ -4,6 +4,19 @@ const app=express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
+
+function makeid(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
+  
+    for (var i = 0; i < length; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
+  }
+
+
+
 app.listen(3000,()=>{
     console.log("Nasluchuje")
 });
@@ -11,10 +24,10 @@ app.listen(3000,()=>{
 
 
 app.post('/game/new',jsonParser,(rq,res)=>{
-    console.log(rq.body);
+    rq.body.game=makeid(30);
 
    return res.json({
-        "game": "33c6e9c0-56c9-11e9-a8f5-b3a4822f0a29",
+        "game": rq.body.game,
         "size": rq.body.size,
         "colors": rq.body.colors,
         "steps": rq.body.steps
@@ -23,19 +36,25 @@ app.post('/game/new',jsonParser,(rq,res)=>{
 
 
 
-app.post('/game/move',(rq,res)=>{
+
+app.post('/game/move',jsonParser,(rq,res)=>{
+
     return res.json({
-        "game": rq.game,
-        "result":{
-            "black": 1,
-            "white": 2
-        }
-    })
-
-})
-
-app.post('/game/status',(rq,res)=>{
-
+        "game": rq.body.game,
+        "result": rq.body.result
+    });
     
 
 })
+
+
+app.post('/game/status',jsonParser,(rq,res)=>{
+
+    return res.json({
+        "game": rq.body.game,
+        "solved": rq.body.solved
+    });
+    
+
+})
+
