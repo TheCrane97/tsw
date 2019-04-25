@@ -1,0 +1,17 @@
+{
+  "name": "WSApp01",
+  "version": "0.1.0",
+  "description": "Pierwszy przykład z WebSocket",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "connect": "^3.6.6",
+    "lokijs": "^1.5.6",
+    "serve-static": "^1.13.2",
+    "ws": "^6.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
