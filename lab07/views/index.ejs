@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+    <title>Mastermind</title>
+</head>
+
+<body>
+    <div id="startGame">
+        <h1>Rozpocznij gre</h1>
+        <button id="myButton">Nowa gra</button>
+    </div>
+    <div id="setGame">
+        <h1>Podaj dane do gry</h1>
+
+            <div class="dane">
+                <h2>Rozmiar:</h2>
+                <input type="number" id="size">
+            </div>
+            <div class="dane">
+                <h2>Kolory:</h2>
+                <input type="number" id="colours">
+            </div>
+            <div class="dane">
+                    <h2>Kroki:</h2>
+                <input type="number" id="steps">
+            </div>
+            <div class="dane">
+                <button class="btn" id="send">Rozpocznij</button>
+            </div>
+
+    </div>
+    <div id="game">
+            <h1>Mastermind</h1>
+            <div class="dane"><button class="btn" id="move">Move</button></div>
+        </div>
+</body>
+<script src="./javascripts/mastermind.js">
+</script>
+
+</html>
